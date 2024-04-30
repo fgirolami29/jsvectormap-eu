@@ -1,0 +1,26 @@
+:root {
+--default-action-color: #d9d9d9;
+--default-action-contrast: #444444;
+--primary-background-contrast: #ffffff;
+--primary-action-contrast: #ffffff;
+--secondary-background-contrast: #444444;
+--secondary-action-contrast: #444444;
+--selection-background: #89defe;
+--success-background: #ffffff;
+--success-border: #e6ffe6;
+--error-background: #f6cbd0;
+--error-border: #eb8a95;
+--error-contrast: #ffffff;
+--pending-background: #fffdf9;
+--pending-border: #fee4ad;
+--transparent-darkest: rgba(17, 12, 12, 0.5);
+--transparent-darker: rgba(0, 0, 0, 0.15);
+--transparent-dark: rgba(15, 34, 0, 0.05);
+--transparent-light: rgba(255, 255, 255, 0.1);
+--transparent-lighter: rgba(255, 255, 255, 0.3);
+--transparent-lightest: rgba(255, 255, 255, 0.6);
+--tertiary-font-color: rgba(255, 255, 255, 0.6);
+--link-font-color: #301f11;
+--info-font-color: #bb9660;
+--custom-scrollbar-color: rgba(0, 0, 0, 0.15);
+}

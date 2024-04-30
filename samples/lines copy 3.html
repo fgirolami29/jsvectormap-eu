@@ -34,17 +34,17 @@
           height: 100%;
       }
 
-      /* Centered button */
-      #add-line {
-        margin-top: 20px;
-      }
-      
       /* Full-width and height map */
       #map {
-    width: 100%;
-    height: 100%;
-    border: 12px solid #301f11;
-}
+          width: 100%;
+          height: 100%;
+          border: 1px solid #EEE;
+      }
+
+      /* Centered button */
+      #add-line {
+          margin-top: 20px;
+      }
   </style>
 </head>
 <body>
@@ -53,7 +53,7 @@
           <div class="col-md-12">
               <div id="map"></div>
               <div style="text-align: center;">
-                  <button id="request-location">GPS LOCATION</button>
+                  <button id="add-line">Add line</button>
               </div>
           </div>
       </div>
@@ -70,100 +70,85 @@
       { 
         name: 'Italy', 
         coords: [41.8719, 12.5674],
-        
+        style: {
+            image: '/assets/images/italy_marker.png'
+        }
     },
     { 
         name: 'Bulgaria', 
         coords: [42.7339, 25.4858],
-        
+        style: {
+            image: '/assets/images/bulgaria_marker.png'
+        }
     },
     { 
         name: 'Serbia', 
         coords: [44.0165, 21.0059],
-        
+        style: {
+            image: '/assets/images/serbia_marker.png'
+        }
     },
     { 
         name: 'Slovakia', 
         coords: [48.669, 19.699],
-        
+        style: {
+            image: '/assets/images/slovakia_marker.png'
+        }
     },
     { 
         name: 'Turkey', 
         coords: [38.9637, 35.2433],
-
+        style: {
+            image: '/assets/images/turkey_marker.png'
+        }
     },
     { 
         name: 'Netherlands', 
         coords: [52.1326, 5.2913],
-       
+        style: {
+            image: '/assets/images/netherlands_marker.png'
+        }
     },
     { 
         name: 'San Marino', 
         coords: [43.9424, 12.4578],
-       
+        style: {
+            image: '/assets/images/sanmarino_marker.png'
+        }
     },
     { 
         name: 'Morocco', 
         coords: [31.7917, -7.0926],
-        
+        style: {
+            image: '/assets/images/morocco_marker.png'
+        }
     }
       /*{ name: 'Egypt', coords: [26.8206, 30.8025] },
       { name: 'Greenland', coords: [71.7069, -42.6043], offsets: [2, 10] },
       { name: 'Canada', coords: [56, -106], offsets: [-7, 12] }, */
     ]
-/*
+
     var lines = [
      { from: 'Bentayga', to: 'Italy', style: { stroke: '#abb0b7', strokeWidth: 1.5 } },
       /*{ from: 'Canada', to: 'Russia', style: { stroke: '#abb0b7', strokeWidth: 1.5 } },*/
-      var lines = [];
-
-// Create lines from Bentayga to each other marker
-for (var i = 1; i < markers.length; i++) {
-    lines.push({
-        from: 'Bentayga',
-        to: markers[i].name,
-        style: { stroke: '#abb0b7', strokeWidth: 1.5 }
-    });
-}
+    ]
+    
     new jsVectorMap({
       map: 'world',
       selector: document.querySelector('#map'),
       selectedRegions: ['IT', 'BG','RS', 'CZ', 'SK', 'TR', 'NL', 'SM', 'MA'],
       regionStyle: {
-        initial: {
-     
-     
-    },
-        stroke: "#301f11",
-        strokeWidth: 2.5,
-        
-        selected: { fill: '#bb9660', 
-      stroke: "#301f11",
-      strokeWidth: 0.5, },
+        selected: { fill: '#bb9660' },
         selectedHover: { fill: '#301f11' },
        
       },
       onLoaded(map) {
-        const button = document.querySelector('#request-location')
+        document.querySelector('#add-line').addEventListener('click', () => {
+         // map.addLine('Canada', 'Greenland', {})
+        });
+        document.querySelector('.jvm-zoom-btn.jvm-zoomin').click();
+      },
 
-button.addEventListener('click', () => {
-  navigator.geolocation.getCurrentPosition((position) => {
-    map.instance.addMarkers({
-      coords: [position.coords.latitude, position.coords.longitude]
-    })
-  })
-});
-        map.setFocus({ region: ['IT', ], animate: true });
-   
-
-  },
-  onViewportChange: function(scale, transX, transY) {
-        // Your code to handle viewport change
-        console.log('Viewport changed: scale=' + scale + ', transX=' + transX + ', transY=' + transY);
-        // Assuming 'map' is the instance of jsVectorMap
-
-
-    },
       // -------- Labels --------
       labels: {
         markers: {
@@ -186,7 +171,7 @@ button.addEventListener('click', () => {
       markerStyle: {
         initial: {
           r: 6,
-          fill: '#301f11',
+          fill: '#1266f1',
           stroke: '#fff',
           strokeWidth: 3,
         }
@@ -195,10 +180,13 @@ button.addEventListener('click', () => {
         initial: {
           fontSize: 13,
           fontWeight: 500,
-          fill: '#301f11',
+          fill: '#35373e',
         },
       },
-
+                // Setting default scale bigger
+                zoomButtons: {
+        scale: 2.5
+      }
     })
   </script>
 </body>

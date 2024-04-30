@@ -6,10 +6,10 @@ export default {
   zoomOnScroll: true,
   zoomOnScrollSpeed: 3,
   zoomMax: 12,
-  zoomMin: 1,
+  zoomMin: 0.5,
   zoomAnimate: true,
   showTooltip: true,
-  zoomStep: 1.5,
+  zoomStep: 0.5,
   bindTouchEvents: true,
 
   // Line options
