@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../dist/css/jsvectormap.css" />
     <script src="../dist/js/jsvectormap.min.js"></script>
     <script src="../dist/maps/spain.js"></script>
-    <script src="../dist/maps/europe-mill.js"></script>
+    <script src="../dist/maps/world-merc.js"></script>
     <script src="../dist/maps/world.js"></script>
     <script src="../dist/maps/italy.js"></script>
     <style>
@@ -117,20 +117,23 @@
       /*{ from: 'Canada', to: 'Russia', style: { stroke: '#abb0b7', strokeWidth: 1.5 } },*/
       var lines = [];
 
-    // Create lines from Bentayga to each other marker
-    for (var i = 1; i < markers.length; i++) {
-        lines.push({
-            from: 'Bentayga',
-            to: markers[i].name,
-            style: { stroke: '#abb0b7', strokeWidth: 1.5 }
-        });
-    }
+// Create lines from Bentayga to each other marker
+for (var i = 1; i < markers.length; i++) {
+    lines.push({
+        from: 'Bentayga',
+        to: markers[i].name,
+        style: { stroke: '#abb0b7', strokeWidth: 1.5 }
+    });
+}
     new jsVectorMap({
       map: 'world',
       selector: document.querySelector('#map'),
       selectedRegions: ['IT', 'BG','RS', 'CZ', 'SK', 'TR', 'NL', 'SM', 'MA'],
       regionStyle: {
-        initial: {},
+        initial: {
+     
+     
+    },
         stroke: "#301f11",
         strokeWidth: 2.5,
         
@@ -143,32 +146,22 @@
       onLoaded(map) {
         const button = document.querySelector('#request-location')
 
-        button.addEventListener('click', () => {
-          navigator.geolocation.getCurrentPosition((position) => {
-            map.instance.addMarkers({
-              coords: [position.coords.latitude, position.coords.longitude]
-            })
-          })
-        });
-     // map.setFocus({ scale: 3,regions: ['IT', 'BG','RS', 'CZ', 'SK', 'TR', 'NL', 'SM', 'MA','UK'], animate: true }).then(() => {    document.querySelector('.jvm-zoom-btn.jvm-zoomout').click();});
-  
-     async function setMapFocusAndClick() {
-  await map.setFocus({ scale: 3, regions: ['IT', 'BG', 'RS', 'CZ', 'SK', 'TR', 'NL', 'SM', 'MA', 'GB'], animate: true });
- 
-}
+button.addEventListener('click', () => {
+  navigator.geolocation.getCurrentPosition((position) => {
+    map.instance.addMarkers({
+      coords: [position.coords.latitude, position.coords.longitude]
+    })
+  })
+});
+        map.setFocus({ region: ['IT', ], animate: true });
+   
 
-// Call the async function
-setMapFocusAndClick();
-//document.querySelector('.jvm-zoom-btn.jvm-zoomout').click();
   },
   onViewportChange: function(scale, transX, transY) {
         // Your code to handle viewport change
         console.log('Viewport changed: scale=' + scale + ', transX=' + transX + ', transY=' + transY);
         // Assuming 'map' is the instance of jsVectorMap
-        //scale = 7;
-      //  return scale;
-      //$('.jvm-zoom-btn.jvm-zoomout').click();
-   
+
 
     },
       // -------- Labels --------
